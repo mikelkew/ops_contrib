@@ -31,7 +31,7 @@ mongodb:
   container_name: mongodb
   restart: always
   environment:
-    TZ: Europe/London
+    TZ: UTC
   # net: host # With this the container is running on the same network as the host
   # ports:
   # - "27017:27017" # With this the service is exposed on the host to the network
@@ -40,15 +40,15 @@ mongodb:
 
 # Fuzzy search
 #  - Not required for VersionEye Enterprise
-# elasticsearch:
-#   image: reiz/elasticsearch:0.9.1-1
-#   container_name: elasticsearch
-#   restart: always
-#   environment:
-#     TZ: Europe/London
+elasticsearch:
+  image: reiz/elasticsearch:0.9.1-1
+  container_name: elasticsearch
+  restart: always
+  environment:
+    TZ: UTC
   # net: host # With this the container is running on the same network as the host
-  # ports:
-  # - "9200:9200" # With this the service is exposed on the host to the network
+  ports:
+  - "9200:9200" # With this the service is exposed on the host to the network
   # volumes:
   #  - /mnt/elasticsearch:/data
 
@@ -58,7 +58,7 @@ rabbitmq:
   container_name: rabbitmq
   restart: always
   environment:
-    TZ: Europe/London
+    TZ: UTC
   # net: host # With this the container is running on the same network as the host
   # ports:
   # - "5672:5672" # With this the service is exposed on the host to the network
@@ -69,7 +69,7 @@ memcached:
   container_name: memcached
   restart: always
   environment:
-    TZ: Europe/London
+    TZ: UTC
   # net: host # With this the container is running on the same network as the host
   # ports:
   # - "11211:11211" # With this the service is exposed on the host to the network

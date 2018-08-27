@@ -22,8 +22,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-IMAGES_URL="https://www.versioneye.com/docker/remote_images.json"
-RES=$(curl -s $IMAGES_URL)
+# IMAGES_URL="https://www.versioneye.com/docker/remote_images.json"
+
+# Using local file as endpoint above is no longer present
+IMAGES_PATH="./remote_images.json"
+RES=$(cat -s $IMAGES_PATH)
 if [ -n "$RES" ]
 then
     #filters json, removes apostrophes,splits CVS, removes empty line, sorts by name
@@ -33,6 +36,6 @@ then
             sed '/^\s*$/d' | \
             sort -d
 else
- echo "Failed to request remote images at ${IMAGES_URL}"
+ echo "Failed to load remote images at ${IMAGES_PATH}"
  exit 1
 fi
